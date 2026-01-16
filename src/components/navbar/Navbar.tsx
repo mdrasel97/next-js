@@ -9,6 +9,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ModeToggle } from "../ModeToggle";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -19,7 +20,7 @@ const navItems = [
 
 export default function Navbar() {
   return (
-    <header className="w-full border-b bg-white">
+    <header className="w-full border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         
         {/* Left - Logo */}
@@ -33,7 +34,7 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-gray-600 hover:text-black transition"
+              className="text-sm font-medium transition"
             >
               {item.name}
             </Link>
@@ -42,6 +43,7 @@ export default function Navbar() {
 
         {/* Right - Auth Buttons (Desktop) */}
         <div className="hidden md:flex items-center gap-3">
+            <ModeToggle />
           <Button variant="ghost" asChild>
             <Link href="/login">Login</Link>
           </Button>
@@ -53,7 +55,9 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div className="md:hidden">
           <Sheet>
+            <ModeToggle />
             <SheetTrigger asChild>
+                
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
               </Button>
@@ -77,6 +81,7 @@ export default function Navbar() {
 
                 {/* Mobile Auth Buttons */}
                 <div className="flex flex-col gap-3">
+                  
                   <Button variant="outline" asChild>
                     <Link href="/login">Login</Link>
                   </Button>
