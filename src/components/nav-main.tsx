@@ -14,7 +14,7 @@ import {
 import Link from "next/link"
 
 export function NavMain({
-  items,
+  routes,
 }: {
   items: {
     name: string
@@ -27,7 +27,7 @@ export function NavMain({
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarMenu>
-        {items.map((item) => (
+        {routes.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <Link href={item.url}>

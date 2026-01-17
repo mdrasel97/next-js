@@ -34,7 +34,7 @@ export default function DashboardLayout(
         } as React.CSSProperties
       }
     >
-      <AppSidebar variant="inset" />
+      <AppSidebar user={userInfo} />
       <SidebarInset>
         <SiteHeader />
         
