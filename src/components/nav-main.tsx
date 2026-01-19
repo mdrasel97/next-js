@@ -1,44 +1,37 @@
 "use client"
 
-import {
-  type Icon,
-} from "@tabler/icons-react"
-
-
+import type { Route } from "@/types"
+import Link from "next/link"
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem
+  SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
 
-export function NavMain({
-  routes,
-}: {
-  items: {
-    name: string
-    url: string
-    icon: Icon
-  }[]
-}) {
-  // const { isMobile } = useSidebar()
+interface NavMainProps {
+  routes: Route[]
+}
 
+export function NavMain({ routes }: NavMainProps) {
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarMenu>
-        {routes.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <Link href={item.url}>
-                <item.icon />
-                <span>{item.name}</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-
-      </SidebarMenu>
+      {routes.map((route) => (
+        <div key={route.title}>
+          <SidebarMenu>
+            {route.data.map((item) => (
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton asChild>
+                  <Link href={item.url}>
+                    {item.icon && <item.icon className="size-4" />}
+                    <span>{item.name}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </div>
+      ))}
     </SidebarGroup>
   )
 }

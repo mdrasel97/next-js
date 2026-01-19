@@ -2,12 +2,7 @@
 
 import * as React from "react"
 import {
-  
-  IconDatabase,
-  IconFileWord,
   IconInnerShadowTop,
-
-  IconReport,
 } from "@tabler/icons-react"
 
 // import { NavMain } from "@/components/nav-main"
@@ -24,35 +19,19 @@ import {
 import { NavMain } from "./nav-main"
 import Link from "next/link"
 import { adminRoutes } from "@/routes/adminRoutes"
+import { Route } from "@/types"
 
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      name: "dashboard",
-      url: "/dashboard",
-      icon: IconDatabase,
-    },
-    {
-      name: "admin",
-      url: "/adminDashboard",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
-    },
-  ],
+  }
 }
 
 export function AppSidebar({user, ...props }: {user:{role:string} & React.ComponentProps<typeof Sidebar>}) {
 
-  let routes = []
+  let routes: Route[] = []
   switch (user.role) {
     case "admin":
       routes = adminRoutes
